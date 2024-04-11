@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" id="generale">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Xbox shop</title>
+        <link rel="icon" type="image/x-icon" href="/img xbox/icona xbox.png">
+        <link rel="stylesheet" href="Xbox.css">
+    </head>
+    <body>
+        <a href="Homepage.html" class="indietro"><img src="img xbox/exit.png" width="40px"></a>
+        <div class="base"></div>
+        <div class="contrasto"></div>
+        <center><img src="img xbox/logo con nome.png" class="logo"></div></center>
+        <center><div class="centrale">
+            <div class="ricerca"></div>
+            <div class="giochi" onclick="openSidebar('Starfield')">
+                <img class="img_giochi" src="img xbox/Starfield.jpg">
+                <div class="sfoca"></div>
+                <h2>Starfield</h2>
+                <p>Immergiti in un'avventura all'esplorazione di pianeti e galassie</p>
+            </div>
+            <div class="giochi" onclick="openSidebar('Doom')">
+                <img class="img_giochi" src="img xbox/doom.jpg">
+                <div class="sfoca"></div>
+                <h2>Doom Eternal</h2>
+                <p>Sconfiggi gli inveri con il solo ardore della tua spada</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('Wolfenstein')">
+                <img class="img_giochi" src="img xbox/wolfenstein.jpg">
+                <div class="sfoca"></div>
+                <h2>Wolfenstein: The New Order</h2>
+                <p>Vivi come se la germania avesse fatto le scelte giuste</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('Skyrim')">
+                <img class="img_giochi" src="img xbox/skyrim.jpeg">
+                <div class="sfoca"></div>
+                <h2>Skyrim</h2>
+                <p>Una vita magica in un mondo nuovo e vasto</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('The Outer Worlds')">
+                <img class="img_giochi" src="img xbox/world.jpeg">
+                <div class="sfoca"></div>
+                <h2>The Outer Worlds</h2>
+                <p>Esplora pianeti e commercia, e ricorda "NESSUNO esce dalla compagnia"</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('Sea of Thieves')">
+                <img class="img_giochi" src="img xbox/Sea_of_thieves_cover_art.jpg">
+                <div class="sfoca"></div>
+                <h2>Sea of Thieves</h2>
+                <p>Naviga in un mare pienop di pirati e bucanieri, sconfiggi e ottieni bottini</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('Dead Space')">
+                <img class="img_giochi" src="img xbox/dead.jpg">
+                <div class="sfoca"></div>
+                <h2>Dead Space</h2>
+                <p>Dove ti trovi? cose è successo al equipaggio?</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('Diablo IV')">
+                <img class="img_giochi" src="img xbox/diablo.jpeg">
+                <div class="sfoca"></div>
+                <h2>Diablo IV</h2>
+                <p>un avventura in 3 persona in inifiniti dongeon e livelli</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('Fallout New Vegas')">
+                <img class="img_giochi" src="img xbox/fallout.jpg">
+                <div class="sfoca"></div>
+                <h2>Fallout New Vegas</h2>
+                <p>Cammina per desereti di radiazzioni nelle ormai rovine di Las Vegas</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('Minecraft')">
+                <img class="img_giochi" src="img xbox/minecraft.jpeg">
+                <div class="sfoca"></div>
+                <h2>Minecraft</h2>
+                <p>Scava e costruisci nel giocho cubettoso piu conosciutoi di sempre</p>
+            </div>
+        </div>
+        <div id="sidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+            <div class="sidebar-content">
+                <label for="gameName">Nome del gioco:</label>
+                <p id="gameName"></p>
+                <label for="quantity">Quantità:</label>
+                <input type="number" id="quantity" name="quantity" min="1" onchange="calculateTotal()">
+                <p id="availability"></p>
+                <p>Prezzo unitario: <span id="unitPrice"></span></p>
+                <p>Totale: <span id="totalPrice"></span></p>
+                <button onclick="addToCart()">compra</button>
+            </div>
+        </div>
+        <script>
+      function openSidebar(gameName) {document.getElementById("gameName").innerText = gameName;document.getElementById("sidebar").style.width = "250px";
+        fetch('giochi.json')
+            .then(response => response.json())
+            .then(data => {
+                const gameInfo = data[gameName];
+                document.getElementById("unitPrice").innerText = gameInfo.price + "€";
+                document.getElementById("quantity").setAttribute("max", gameInfo.copiesAvailable);
+                document.getElementById("availability").innerText = gameInfo.copiesAvailable > 0 ? "" : "Esaurito";
+                document.getElementById("quantity").value = 1;
+                calculateTotal();
+            });}
+    function closeSidebar() {document.getElementById("sidebar").style.width = "0";}
+
+    function addToCart() {
+        const quantity = document.getElementById("quantity").value;
+        const unitPrice = parseFloat(document.getElementById("unitPrice").innerText);
+        const total = quantity * unitPrice;
+        document.getElementById("totalPrice").innerText = total.toFixed(2) + "€";
+ 
+    }
+
+    function calculateTotal() {
+        const quantity = document.getElementById("quantity").value;
+        const unitPrice = parseFloat(document.getElementById("unitPrice").innerText);
+        const total = quantity * unitPrice;
+        document.getElementById("totalPrice").innerText = total.toFixed(2) + "€";
+    }
+        </script>
+    </body>
+</html>
