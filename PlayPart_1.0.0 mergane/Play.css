@@ -1,0 +1,118 @@
+#generale {
+    background-color: rgb(35, 32, 182);
+}
+.base {
+    background-image: url('Giochi Play/SfondoPLay.webp');
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center;
+    background-attachment: fixed;
+    margin-top: -49px;
+    margin-left: -9px;
+    width: 102%;
+    height: 800px;
+}
+.contrasto {
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, rgb(35, 32, 182), rgba(125, 255, 4, 0));
+    width: 102%;
+    margin-left: -9px;
+    margin-top: -800px;
+    height: 800px;
+}
+.imgsfondo {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: -100px;
+}
+.logo{
+    width: 800px;
+    margin-top: -300px;
+}
+.centrale{
+    height: 1000px;
+    width: 700px;
+}
+.indietro{
+    position: fixed;
+    bottom: 0; 
+    left: 0;
+    padding: 20px 20px;
+}
+.giochi{
+    width: 200px;
+    border-radius: 20px;
+    height: 400px;
+    background-color: rgb(12, 12, 12);
+    color: white;
+    float: left;
+    margin-bottom: 20px; 
+    margin-left: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.giochi:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); 
+}
+.img_giochi{
+    width: 100%;
+    height: 225px;
+    border-radius: 10px;
+    z-index: -1;
+}
+.sfoca{
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to top, rgb(12, 12, 12), rgba(125, 255, 4, 0));
+    width: 100%;
+    margin-top: -100px;
+    height: 100px;
+}
+p{
+    width: 150px;
+}
+.sidebar {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    margin-top: 150px;
+    height: 600px;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidebar-content {
+    padding: 16px;
+    color: white;
+}

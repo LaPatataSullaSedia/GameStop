@@ -1,0 +1,42 @@
+{
+    "Spider-Man": {
+        "price": 79.99,
+        "copiesAvailable": 72
+    },
+    "Spider-Man Miles Morales": {
+        "price": 59.99,
+        "copiesAvailable": 44
+    },
+    "Spider-Man 2": {
+        "price": 59.99,
+        "copiesAvailable": 89
+    },
+    "Ghost Of Tsushima": {
+        "price": 74.99,
+        "copiesAvailable": 21
+    },
+    "Gran Turismo 7": {
+        "price": 49.99,
+        "copiesAvailable": 61
+    },
+    "God Of War Ragnarok": {
+        "price": 59.99,
+        "copiesAvailable": 39
+    },
+    "Horizon Zero Dawn": {
+        "price": 19.99,
+        "copiesAvailable": 52
+    },
+    "The Last Of Us 2": {
+        "price": 40.00,
+        "copiesAvailable": 23
+    },
+    "Demon Souls": {
+        "price": 39.99,
+        "copiesAvailable": 83
+    },
+    "Ucharted La Eredità Perduta": {
+        "price": 15.99,
+        "copiesAvailable": 19
+    }  
+}
