@@ -1,0 +1,46 @@
+{
+    "AnimalCrossing": {
+        "price": 49.98,
+        "copiesAvailable": 35
+    },
+    "Kirby": {
+        "price": 60.98,
+        "copiesAvailable": 81
+    },
+    "MarioWonder": {
+        "price": 60.98,
+        "copiesAvailable": 46
+    },
+    "MarioKart": {
+        "price": 60.98,
+        "copiesAvailable": 23
+    },
+    "Pikmin": {
+        "price": 60.98,
+        "copiesAvailable": 10
+    },
+    "PokemonArceus": {
+        "price": 60.98,
+        "copiesAvailable": 29
+    },
+    "PokemonScarlatto": {
+        "price": 49.98,
+        "copiesAvailable": 30
+    },
+    "PokemonVioletto": {
+        "price": 49.98,
+        "copiesAvailable":30
+    },
+    "PrincessPeach": {
+        "price": 60.98,
+        "copiesAvailable": 57
+    },
+    "ZeldaBOTW": {
+        "price": 70.98,
+        "copiesAvailable": 51
+    },
+    "ZeldaTOTK": {
+        "price": 70.98,
+        "copiesAvailable": 72
+    } 
+}

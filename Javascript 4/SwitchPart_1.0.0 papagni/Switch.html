@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" id="generale">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Xbox shop</title>
+        <link rel="icon" type="image/x-icon" href="/img xbox/icona xbox.png">
+        <link rel="stylesheet" href="Switch.css">
+    </head>
+    <body>
+        <a href="../Homepage.html" class="indietro"><img src="Giochi Switch/exit.png" width="40px"></a>
+        <div class="base"></div>
+        <div class="contrasto"></div>
+        <center><img src="Giochi Switch/LogoSwitch.png" class="logo"></div></center>
+        <center><div class="centrale">
+            <div class="ricerca"></div>
+            <div class="giochi" onclick="openSidebar('AnimalCrossing')">
+                <img class="img_giochi" src="Giochi Switch/AnimalCrossingNewOrizons.jpg">
+                <div class="sfoca"></div>
+                <h2>Animal Crossing</h2>
+                <p>Vai ad abitare su una nuova isola deserta e modificala a tuo piacimento</p>
+            </div>
+            <div class="giochi" onclick="openSidebar('Kirby')">
+                <img class="img_giochi" src="Giochi Switch/KirbyELaTerraPerduta.jpeg">
+                <div class="sfoca"></div>
+                <h2>Kirby e la Terra Perduta</h2>
+                <p>Esplora un mondo nuovo e selvaggio in 3D</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('MarioWonder')">
+                <img class="img_giochi" src="Giochi Switch/MarioWonder.jpg">
+                <div class="sfoca"></div>
+                <h2>Super Mario Bros Wonder</h2>
+                <p>Salva il regno dei fiori con Mario e i suoi amici</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('MarioKart')">
+                <img class="img_giochi" src="Giochi Switch/MK8D.jpeg">
+                <div class="sfoca"></div>
+                <h2>Mario Kart 8 Deluxe</h2>
+                <p>Gareggia su più di 90 piste con il tuo personaggio preferito</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('Pikmin')">
+                <img class="img_giochi" src="Giochi Switch/Pikmin4.jpeg">
+                <div class="sfoca"></div>
+                <h2>Pikmin 4</h2>
+                <p>Salva gli altri esploratori con l'aiuto dei Pikmin</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('PokemonArceus')">
+                <img class="img_giochi" src="Giochi Switch/PokemonArceus.webp">
+                <div class="sfoca"></div>
+                <h2>Leggende Pokemon Arceus</h2>
+                <p>Esplora Hisui e cattura i pokemon della regione</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('PokemonScarlatto')">
+                <img class="img_giochi" src="Giochi Switch/PokemonScarlatto.jpeg">
+                <div class="sfoca"></div>
+                <h2>Pokemon Scarlatto</h2>
+                <p>Esplora Paldea a cavallo del pokemon leggendario Koraidon</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('PokemonVioletto')">
+                <img class="img_giochi" src="Giochi Switch/PokemonVioletto.jpg">
+                <div class="sfoca"></div>
+                <h2>Pokemon Violetto</h2>
+                <p>Esplora Paldea a cavallo del pokemon leggendario Miraidon</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('PrincessPeach')">
+                <img class="img_giochi" src="Giochi Switch/PrincessPeach.jpeg">
+                <div class="sfoca"></div>
+                <h2>Princess Peach Showtime</h2>
+                <p>Salva il teatro con la principessa Peach e i suoi poteri</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('ZeldaBOTW')">
+                <img class="img_giochi" src="Giochi Switch/ZeldaBOTW.jpg">
+                <div class="sfoca"></div>
+                <h2>The Legend of Zelda: Breath of the Wild</h2>
+                <p>Esplora e salva il regno di Hyrule</p>
+            </div>
+            <div class="giochi"onclick="openSidebar('ZeldaTOTK')">
+                <img class="img_giochi" src="Giochi Switch/ZeldaTOTK.jpeg">
+                <div class="sfoca"></div>
+                <h2>The Legend of Zelda: Tears of the Kingdom</h2>
+                <p>Esplora e salva il regno di Hyrule, il sottosuolo e le isole nel cielo</p>
+            </div>
+        </div>
+        <div id="sidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeSidebar()">×</a>
+            <div class="sidebar-content">
+                <img src="Giochi Switch/LogoSwitch.png" width="200px"><br />
+                <label for="gameName">Nome del gioco:</label>
+                <p id="gameName"></p>
+                <label for="quantity">Quantità:</label>
+                <input type="number" id="quantity" name="quantity" min="1" onchange="calculateTotal()">
+                <p id="availability" ></p>
+                <p>Unità disponibili: <span id="quantita"></span></p>
+                <p>Prezzo al unità: <span id="unitPrice"></span></p>
+                <p>Totale: <span id="totalPrice"></span></p>
+                <button onclick="addToCart()">compra</button>
+            </div>
+        </div>
+        <script>
+            function openSidebar(gameName) {
+    document.getElementById("gameName").innerText = gameName;
+    document.getElementById("sidebar").style.width = "250px";
+
+    fetch('giochi.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Errore durante il recupero dei dati.");
+            }
+            return response.json();
+        })
+        .then(data => {
+            return new Promise((resolve, reject) => {
+                const gameInfo = data[gameName];
+                if (gameInfo) {
+                    resolve(gameInfo);
+                } else {
+                    reject("Gioco non trovato");
+                }
+            });
+        })
+        .then(gameInfo => {
+            document.getElementById("unitPrice").innerText = gameInfo.price + "€";
+            document.getElementById("quantita").innerText = gameInfo.copiesAvailable;
+            document.getElementById("quantity").setAttribute("max", gameInfo.copiesAvailable);
+            document.getElementById("availability").innerText = gameInfo.copiesAvailable > 0 ? "" : "Esaurito";
+            document.getElementById("quantity").value = 1;
+            calculateTotal();
+        })
+        .catch(error => {
+            console.error(error);
+            alert("Si è verificato un errore durante il recupero dei dati.");
+        });
+}
+
+function addToCart() {
+    const quantity = parseInt(document.getElementById("quantity").value);
+    const unitPrice = parseFloat(document.getElementById("unitPrice").innerText);
+    const availableQuantity = parseInt(document.getElementById("quantita").innerText);
+
+    if (quantity > availableQuantity) {
+        alert("Non puoi acquistare più unità di quelle disponibili.");
+        return;
+    }
+
+    const total = quantity * unitPrice;
+    document.getElementById("totalPrice").innerText = total.toFixed(2) + "€";
+    const newQuantity = availableQuantity - quantity;
+    document.getElementById("quantita").innerText = newQuantity;
+    alert("Hai acquistato " + quantity + " unità");
+}
+
+function closeSidebar() {
+    document.getElementById("sidebar").style.width = "0";
+}
+
+function calculateTotal() {
+    const quantity = document.getElementById("quantity").value;
+    const unitPrice = parseFloat(document.getElementById("unitPrice").innerText);
+    const total = quantity * unitPrice;
+    document.getElementById("totalPrice").innerText = total.toFixed(2) + "€";
+}
+               </script>
+           </body>
+       </html>

@@ -1,0 +1,42 @@
+{
+    "Starfield": {
+        "price": 79.99,
+        "copiesAvailable": 45
+    },
+    "Doom": {
+        "price": 9.99,
+        "copiesAvailable": 23
+    },
+    "Wolfenstein": {
+        "price": 19.99,
+        "copiesAvailable": 34
+    },
+    "Skyrim": {
+        "price": 4.99,
+        "copiesAvailable": 11
+    },
+    "The Outer Worlds": {
+        "price": 14.50,
+        "copiesAvailable": 0
+    },
+    "Sea of Thieves": {
+        "price": 13.00,
+        "copiesAvailable": 78
+    },
+    "Dead Space": {
+        "price": 36.99,
+        "copiesAvailable": 32
+    },
+    "Diablo IV": {
+        "price": 42.90,
+        "copiesAvailable": 18
+    },
+    "Fallout New Vegas": {
+        "price": 19.99,
+        "copiesAvailable": 65
+    },
+    "Minecraft": {
+        "price": 20.99,
+        "copiesAvailable": 72
+    }  
+}
